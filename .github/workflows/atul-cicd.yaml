@@ -1,5 +1,5 @@
 # Trigger Test-1
-name: Enterprise DevSecOps CICD Pipeline
+name: Atul DevSecOps CICD Pipeline
 on:
   workflow_dispatch: {}
   push:
