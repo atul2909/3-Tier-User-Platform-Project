@@ -30,7 +30,7 @@ jobs:
                 --redact \
                 --exit-code 0
           - name: Upload Gitleaks Report
-            uses: actions/Upload@v4
+            uses: actions/upload-artifact@v4
             with:
               name: gitleaks-report
               path: gitleaks-report.json
