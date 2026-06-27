@@ -1,0 +1,34 @@
+name: my pipeline
+on:
+    push:
+        branches:
+            - main
+            - dev
+        paths:
+            - client/**
+            - server/**
+
+jobs:
+    gitleaks-scan:
+      name: GitLeaks Scan
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout code
+            uses: actions/Checkout@v7
+
+          - name: Run GitLeaks
+            run: |
+                docker run --rm \
+                -v "${{ github.workspace }}:/repo" \
+                zricethezav/gitleaks:latest detect \
+                --source=/repo \
+                --report-format=json \
+                --report-path=/repo/gitleaks-report.json \
+                --redact \
+                --exit-code 0
+          - name: Upload Gitleaks Report
+            uses: actions/Upload@v4
+            with:
+              name: gitleaks-report
+              path: gitleaks-report.json
+              if-no-files-found: warn
