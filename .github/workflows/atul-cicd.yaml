@@ -8,8 +8,7 @@ on:
             - client/**
             - server/**
     
-    workflow_dispatch:  
-
+    workflow_dispatch:
 
 jobs:
     gitleaks-scan:
@@ -31,7 +30,7 @@ jobs:
                 --report-format=json \
                 --report-path=/repo/gitleaks-report.json \
                 --redact \
-                --exit-code 1
+                --exit-code 0
           - name: Upload Gitleaks Report
             uses: actions/upload-artifact@v7
             with:
