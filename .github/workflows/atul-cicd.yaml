@@ -7,6 +7,9 @@ on:
         paths:
             - client/**
             - server/**
+    
+    workflow_dispatch:  
+
 
 jobs:
     gitleaks-scan:
