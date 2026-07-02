@@ -18,7 +18,7 @@ jobs:
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::304182266883:role/GithubOIDCAdminRole-AdiJaiswal
+          role-to-assume: ${{secrets.ROLE_TO_ASSUME}}
           aws-region: us-east-1
           role-session-name: My-Session
           role-duration-seconds: 10800  #3hours and updated the role's Maximum session duration to 4 hours in IAM in AWS Console
